@@ -5,173 +5,474 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>checkout form</title>
+
+    <style>
+        body {
+            background-color: rgb(250, 250, 250);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, 'Arial Narrow', Arial, sans-serif;
+            margin: 25px;
+            font-size: 20px;
+            max-width: 1000px;
+            font-weight: lighter;
+            margin: auto;
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .explanation {
+            text-align: center;
+            margin: 55px 25px;
+        }
+
+        h2,
+        h3,
+        h4,
+        h6 {
+            font-weight: 400;
+        }
+
+        .right {
+            float: right;
+            min-width: 30%;
+        }
+
+        .cart {
+            background-color: white;
+            max-width: 500px;
+            border: 1px solid gray;
+            border-radius: 6px;
+        }
+
+        .cartitem {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid gray;
+        }
+
+        .cartitem:last-child {
+            border-bottom: none;
+        }
+
+        .cartitem div h6 {
+            margin: 0 0 4px 0;
+            line-height: 1.2;
+        }
+
+        .cartitem div small {
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        h4 {
+            display: flex;
+            justify-content: space-between;
+            max-width: 490px;
+            color: blue;
+        }
+
+        .num {
+            text-align: right;
+            border: 1px solid blue;
+            border-radius: 40px;
+            background-color: blue;
+            color: white;
+            width: 30px;
+        }
+
+        .promo {
+            background-color: white;
+            border: 1px solid gray;
+            border-radius: 6px;
+            padding: 5px;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        .main {
+            float: left;
+            width: 70%;
+            max-width: 650px;
+            height: 1000px;
+        }
+
+        input,
+        textarea,
+        select {
+            height: 25px;
+            border: 1px solid gray;
+            border-radius: 5px;
+        }
+
+        #email,
+        #address {
+            width: 100%;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .username-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .username-group span {
+            background-color: #e9ecef;
+            border: 1px solid gray;
+            border-right: none;
+            border-radius: 5px 0 0 5px;
+            padding: 0 8px;
+            height: 27px;
+            display: flex;
+            align-items: center;
+        }
+
+        .username-group input {
+            border-radius: 0 5px 5px 0;
+            border-left: none;
+            flex: 1;
+        }
+
+        .location-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .location-row>div:first-child {
+            flex: 2;
+        }
+
+        .location-row>div:nth-child(2) {
+            flex: 2;
+        }
+
+        .location-row>div:last-child {
+            flex: 1;
+        }
+
+        .location-row label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .location-row select,
+        .location-row input {
+            width: 100%;
+        }
+
+        .inline-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .inline-group label {
+            margin-bottom: 0;
+            margin-right: 10px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            height: auto;
+            margin-right: 5px;
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+        }
+
+        .radio {
+            font-size: 15px;
+        }
+
+        .promo {
+            max-width: 100%;
+            margin: 20px 0;
+        }
+
+        .promo form {
+            width: 100%;
+        }
+
+        .promobox {
+            display: flex;
+            border: 2px solid #e1e5e9;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .promobox input {
+            flex: 1;
+            border: none;
+            padding: 15px 20px;
+            font-size: 16px;
+            outline: none;
+            background: transparent;
+        }
+
+        .promobox button {
+            background: #3f464f;
+            color: white;
+            border: none;
+            padding: 10px 10px;
+            font-size: 16px;
+        }
+
+        @media(max-width: 1000px) {
+            .right {
+                min-width: 100%;
+            }
+        }
+
+        @media(max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+            }
+
+            .location-row {
+                flex-direction: column;
+            }
+
+            .inline-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .button {
+            width: 100%;
+            height: 40px;
+            background-color: blue;
+            border: none;
+            border-radius: 9px;
+            color: white;
+            padding: 5px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 15px;
+        }
+    </style>
 </head>
 
 <body>
-    <!--필수 : input(text, radio, checkbox, date), select, textarea
-선택 : fieldset, legend, optgroup, input(color), datalist-->
-
     <div class="container">
         <main>
-            <div>
+            <div class="explanation">
                 <img class="d-block mx-auto mb-4"
                     src="	https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="72"
                     height="57">
+
                 <h2>checkout form</h2>
+
                 <contents>
-                    Below is an example form built entirely with Bootstrap’s form controls. Each required form group has
+                    Below is an example form built entirely with Bootstrap's form controls. Each required form group has
                     a validation state that can be triggered by attempting to submit the form without completing it.
                 </contents>
             </div>
 
-            <div>
+            <div class="right">
                 <h4>
                     <span>Your cart</span>
-                    <span>3</span>
+                    <span class="num">3</span>
                 </h4>
+                <div class="cart">
+                    <ul>
+                        <li class="cartitem">
+                            <div>
+                                <h6>Product name</h6>
+                                <small>Brief description</small>
+                            </div>
+                            <span>$12</span>
+                        </li>
 
-                <ul>
-                    <li>
-                        <div>
-                            <h6>Product name</h6>
-                            <small>Brief description</small>
+                        <li class="cartitem">
+                            <div>
+                                <h6>Second Product</h6>
+                                <small>Brief description</small>
+                            </div>
+                            <span>$8</span>
+                        </li>
+
+                        <li class="cartitem">
+                            <div>
+                                <h6>Third item</h6>
+                                <small>Brief description</small>
+                            </div>
+                            <span>$5</span>
+                        </li>
+
+                        <li class="cartitem">
+                            <div>
+                                <h6>Promo code</h6>
+                                <small>EXAMPLECODE</small>
+                            </div>
+                            <span>-$5</span>
+                        </li>
+
+                        <li class="cartitem">
+                            <div>
+                                <span>Total (USD)</span>
+                                <strong>$20</strong>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="promo">
+                    <form>
+                        <div class="promobox">
+                            <input type="text" placeholder="Promo code">
+                            <button type="submit">Redeem</button>
                         </div>
-                        <span>$12</span>
-                    </li>
-
-                    <li>
-                        <div>
-                            <h6>Second Product</h6>
-                            <small>Brief description</small>
-                        </div>
-                        <span>$8</span>
-                    </li>
-
-                    <li>
-                        <div>
-                            <h6>Third item</h6>
-                            <small>Brief description</small>
-                        </div>
-                        <span>$5</span>
-                    </li>
-
-                    <li>
-                        <div>
-                            <h6>Promo code</h6>
-                            <small>EXAMPLECODE</small>
-                        </div>
-                        <span>-$5</span>
-                    </li>
-
-                    <li>
-                        <div>
-                            <span>Total (USD)</span>
-                            <strong>$20</strong>
-                        </div>
-                    </li>
-                </ul>
-
-                <form>
-                    <div>
-                        <input type="text" placeholder="Promo code">
-                        <button type="submit">Redeem</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
 
-            <div>
+            <div class="main">
                 <h3>Billing address</h3>
                 <form>
                     <!--이름, input_text-->
-                    <div>
-                        <label for="firstname">First name</label>
-                        <input type="text" id="firstname" name="firstname" required>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstname">First name</label>
+                            <input type="text" id="firstname" name="firstname" required>
+                        </div>
 
-                        <label for="lastname">Last name</label>
-                        <input type="text" id="lastname" name="lastname" required>
+                        <div class="form-group">
+                            <label for="lastname">Last name</label>
+                            <input type="text" id="lastname" name="lastname" required>
+                        </div>
                     </div>
 
                     <!--username, input_text-->
-                    <div>
+                    <div class="form-group">
                         <label for="username">Username</label>
-                        <div>
+                        <div class="username-group">
                             <span>@</span>
                             <input type="text" id="id" name="id" required placeholder="Username">
                         </div>
                     </div>
 
-                    <!--email, input_text, select-->
-                    <div>
+                    <!--email, input_text-->
+                    <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="you@example.com">
                     </div>
 
                     <!--주소, textarea-->
-                    <div>
+                    <div class="form-group">
                         <label for="address">Address</label>
                         <textarea id="address" name="address" required placeholder="1234 Main St"></textarea>
                     </div>
 
-                    <!--country, select-->
-                    <div>
-                        Country
-                        <select>
-                            <option value="" selected disabled hidden>Choose...</option>
-                            <option>
-                                Korea
-                            </option>
-                        </select>
+                    <!--country,select-->
+                    <div class="location-row">
+                        <div>
+                            <label>Country</label>
+                            <select>
+                                <option value="" selected disabled hidden>Choose...</option>
+                                <option>Korea</option>
+                            </select>
+                        </div>
 
-                        State
-                        <select>
-                            <option value="" selected disabled hidden>Choose...</option>
-                            <option>
-                                Ulsan
-                            </option>
-                        </select>
+                        <div>
+                            <label>State</label>
+                            <select>
+                                <option value="" selected disabled hidden>Choose...</option>
+                                <option>Ulsan</option>
+                            </select>
+                        </div>
 
-                        <label for="zip">Zip</label>
-                        <input type="text" id="zip" name="zip">
+                        <div>
+                            <label for="zip">Zip</label>
+                            <input type="text" id="zip" name="zip">
+                        </div>
                     </div>
 
                     <!--배송 희망일, date-->
-                    <div>
+                    <div class="inline-group">
                         <label for="date">Expected delivery date</label>
                         <input type="date" id="date" name="date" required>
                     </div>
 
-                    <!--정보 확인, checkbox-->
-                    <div>
-                        <input type="checkbox" id="checkinformation1" name="checkinformation1">
-                        <label for="checkinformation1">Shipping address is the same as my billing address</label>
+                    <hr>
 
-                        <input type="checkbox" id="checkinformation2" name="checkinformation2">
-                        <label for="checkinformation2">Save this information for next time</label>
+                    <!--정보 확인, checkbox-->
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="checkinformation1" name="checkinformation1">
+                            <label for="checkinformation1">Shipping address is the same as my billing address</label>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="checkinformation2" name="checkinformation2">
+                            <label for="checkinformation2">Save this information for next time</label>
+                        </div>
                     </div>
 
+                    <hr>
+
                     <!--결제수단, radio-->
-                    <fieldset>
+                    <fieldset class="form-group">
                         <legend>Payment</legend>
-                        <div>
+                        <div class="radio">
                             <input type="radio" id="creditcard" name="payment">
-                            <label>Credit card</label>
+                            <label for="creditcard">Credit card</label>
                         </div>
 
-                        <div>
+                        <div class="radio">
                             <input type="radio" id="debitcard" name="payment">
-                            <label>Debit card</label>
+                            <label for="debitcard">Debit card</label>
                         </div>
 
-                        <div>
+                        <div class="radio">
                             <input type="radio" id="paypal" name="payment">
-                            <label>PayPal</label>
+                            <label for="paypal">PayPal</label>
                         </div>
                     </fieldset>
 
-
-
                     <!--제출버튼-->
-                    <button type="submit">continue to checkout</button>
+                    <button type="submit" class="button">Continue to checkout</button>
                 </form>
             </div>
         </main>
