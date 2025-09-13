@@ -11,12 +11,113 @@
     <!--필수 : input(text, radio, checkbox, date), select, textarea
 선택 : fieldset, legend, optgroup, input(color), datalist-->
 
+    <div class="container">
+        <main>
+            <div>
+                <h1>checkout form</h1>
+                <contents>
+                    Below is an example form built entirely with Bootstrap’s form controls. Each required form group has
+                    a validation state that can be triggered by attempting to submit the form without completing it.
+                </contents>
+            </div>
 
-<h1>checkout form</h1>
+            <div>
+                <h3>Billing address</h3>
+                <form>
+                    <!--이름, input_text-->
+                    <div>
+                        <label for="firstname">First name</label>
+                        <input type="text" id="firstname" name="firstname" required>
 
-<form>
-    first name: <input type="text">
-</form>
+                        <label for="lastname">Last name</label>
+                        <input type="text" id="lastname" name="lastname" required>
+                    </div>
+
+                    <!--username, input_text-->
+                    <div>
+                        <label for="username">Username</label>
+                        <input type="text" id="id" name="id" required>
+                    </div>
+
+                    <!--email, input_text, select-->
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+
+                    <!--주소, textarea-->
+                    <div>
+                        <label for="address">Address</label>
+                        <textarea id="address" name="address" required></textarea>
+                    </div>
+
+                    <!--country, select-->
+                    <div>
+                        Country
+                        <select>
+                            <option value="" selected disabled hidden>Choose...</option>
+                            <option>
+                                Korea
+                            </option>
+                        </select>
+
+                        State
+                        <select>
+                            <option value="" selected disabled hidden>Choose...</option>
+                            <option>
+                                Ulsan
+                            </option>
+                        </select>
+
+                        <label for="zip">Zip</label>
+                        <input type="text" id="zip" name="zip">
+                    </div>
+
+                    <!--배송 희망일, date-->
+                    <div>
+                        <label for="date">Expected delivery date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+
+                    <!--정보 확인, checkbox-->
+                    <div>
+                        <input type="checkbox" id="checkinformation1" name="checkinformation1">
+                        <label for="checkinformation1">Shipping address is the same as my billing address</label>
+
+                        <input type="checkbox" id="checkinformation2" name="checkinformation2">
+                        <label for="checkinformation2">Save this information for next time</label>
+                    </div>
+
+                    <!--결제수단, radio-->
+                    <fieldset>
+                        <legend>Payment</legend>
+                        <div>
+                            <input type="radio" id="creditcard" name="payment">
+                            <label>Credit card</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="debitcard" name="payment">
+                            <label>Debit card</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="paypal" name="payment">
+                            <label>PayPal</label>
+                        </div>
+                    </fieldset>
+
+
+
+                    <!--제출버튼-->
+                    <button type="submit">continue to checkout</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <div class="footer">
+    </div>
 </body>
 
 </html>
